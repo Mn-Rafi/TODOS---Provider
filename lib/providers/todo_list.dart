@@ -77,6 +77,7 @@ class TodoList with ChangeNotifier {
       return todo;
     }).toList();
     _state = _state.copyWith(todos: newTodos);
+    print(_state);
     notifyListeners();
   }
 
