@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_provider/pages/todos_page.dart';
+import 'package:todo_provider/pages/splash_screen.dart';
 import 'package:todo_provider/utils/database_services.dart';
 
 import 'providers/providers.dart';
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: TodosPage(),
+        home: SplashScreen(),
       ),
     );
   }

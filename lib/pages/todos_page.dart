@@ -178,6 +178,7 @@ class ShowTodos extends StatelessWidget {
   Widget build(BuildContext context) {
     final todos = context.watch<FilterTodos>().state.filteredTodos;
     return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) => Dismissible(
         key: ValueKey(todos[index].id),

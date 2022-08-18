@@ -15,7 +15,7 @@ class Todo extends Equatable {
   static Todo fromMap(Map<String, Object?> mapFromDB) {
     final String id = mapFromDB['id'] as String;
     final String desc = mapFromDB['desc'] as String;
-    final bool isCompleted = mapFromDB['isCompleted'] as bool;
+    final bool isCompleted = mapFromDB['isCompleted'] == 1 ? true : false;
     return Todo(
       id: id,
       desc: desc,
