@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_provider/pages/todos_page.dart';
+import 'package:todo_provider/utils/database_services.dart';
 
 import 'providers/providers.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
+  await openDB();
   runApp(MyApp());
 }
 
@@ -25,7 +29,9 @@ class MyApp extends StatelessWidget {
           create: (context) => TodoList(),
         ),
         ChangeNotifierProxyProvider<TodoList, ActiveTodoCount>(
-          create: (context) => ActiveTodoCount(),
+          create: (context) => ActiveTodoCount(
+              initialActiveTodoCount:
+                  context.read<TodoList>().state.todos.length),
           update: (
             BuildContext context,
             TodoList todoList,
@@ -35,7 +41,8 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProxyProvider3<TodoFilter, TodoSearch, TodoList,
             FilterTodos>(
-          create: (context) => FilterTodos(),
+          create: (context) => FilterTodos(
+              initalFilteredTodo: context.read<TodoList>().state.todos),
           update: (
             BuildContext context,
             TodoFilter todoFilter,

@@ -46,7 +46,7 @@ class TodoList with ChangeNotifier {
     final newTodos = [..._state.todos, newTodo];
     _state = _state.copyWith(todos: newTodos);
     // _state = _state.copyWith(
-    //     todos: List.from(_state.todos)..add(Todo(desc: todoDesc)));
+    // todos: List.from(_state.todos)..add(Todo(desc: todoDesc)));
     notifyListeners();
   }
 

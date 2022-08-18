@@ -12,6 +12,16 @@ class Todo extends Equatable {
     required this.desc,
     this.isCompleted = false,
   }) : id = id ?? uuid.v4();
+  static Todo fromMap(Map<String, Object?> mapFromDB) {
+    final String id = mapFromDB['id'] as String;
+    final String desc = mapFromDB['desc'] as String;
+    final bool isCompleted = mapFromDB['isCompleted'] as bool;
+    return Todo(
+      id: id,
+      desc: desc,
+      isCompleted: isCompleted,
+    );
+  }
 
   @override
   List<Object?> get props => [
