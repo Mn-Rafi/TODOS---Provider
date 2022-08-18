@@ -22,7 +22,7 @@ class TodoFilterState extends Equatable {
   }
 }
 
-class TodoFilter extends ChangeNotifier {
+class TodoFilter with ChangeNotifier {
   TodoFilterState _state = TodoFilterState.initial();
   TodoFilterState get state => _state;
   void changeFilter(Filter newFilter) {
